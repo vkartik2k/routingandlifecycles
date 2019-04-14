@@ -1,30 +1,42 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
-
+import {BrowserRouter, Route, Link, NavLink, Switch, Redirect} from 'react-router-dom'
 
 //components
 import home from './home'
 import admin from './admin'
+import user from './user'
 
 const App = () =>{
     return(
         <BrowserRouter>
             <div>
                 <header> Welcome<br/>
-                    <Link to="/">Home</Link><br/>
-                    <Link to={{
+                    <NavLink to="/a"
+                    activeClassName = "selected"
+                    activeStyle = {{ color: 'red'}}
+                    >Home</NavLink><br/>
+                    <NavLink to={{
                         pathname : '/admin',
                         hash : '#dfxc54bcbnvmnbm',
                         search : ''
-                    }}>admin</Link><br/>
+                    }}
+                    activeClassName = "selected"
+                    activeStyle = {{ color: 'red'}}
+                    >admin</NavLink><br/>
                     <hr/>
                 </header>
-                <Route path='/' exact component={home} />
-                <Route path='/admin' exact component={admin} />
+                <Switch>
+                    <Route path='/admin' component={admin} />
+                    <Route path='/user/:username' component={user} />
+                    <Route path='/' component={home} />
+                </Switch>
+                
+                
             </div>
         </BrowserRouter>
     )
 }
 
 ReactDOM.render(<App/>,document.getElementById('root'));
+
