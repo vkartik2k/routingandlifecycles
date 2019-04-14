@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 
 
 //components
@@ -11,7 +11,15 @@ const App = () =>{
     return(
         <BrowserRouter>
             <div>
-                <header> This is my header block</header>
+                <header> Welcome<br/>
+                    <Link to="/">Home</Link><br/>
+                    <Link to={{
+                        pathname : '/admin',
+                        hash : '#dfxc54bcbnvmnbm',
+                        search : ''
+                    }}>admin</Link><br/>
+                    <hr/>
+                </header>
                 <Route path='/' exact component={home} />
                 <Route path='/admin' exact component={admin} />
             </div>
