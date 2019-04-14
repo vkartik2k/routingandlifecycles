@@ -1,10 +1,11 @@
 import React from 'react'
+import Auth from './hoc/auth'
 
 const admin = ()=> {
     return (
-        <div>
+        <Auth>
             admin
-        </div>
+        </Auth>
     )
 
 }
